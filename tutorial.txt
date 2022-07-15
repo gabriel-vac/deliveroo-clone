@@ -1,0 +1,10 @@
+npx create-expo-app deliveroo-clone
+yarn add tailwindcss-react-native
+yarn add --dev tailwindcss
+yarn add @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
+yarn add @react-navigation/native-stack
+yarn add react-native-heroicons react-native-svg
+
+
+//obs: react-native as views são flex por default e também flex-column
