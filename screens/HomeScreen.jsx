@@ -17,36 +17,36 @@ import {
 } from 'react-native-heroicons/outline';
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
-// import sanityClient from '../sanity';
+import sanityClient from '../sanity';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  // const [featuredCategories, setFeaturedCategories] = useState([]);
+  const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
-  // useEffect(() => {
-  //   sanityClient
-  //     .fetch(
-  //       `*[_type == "featured"] {
-  //         ...,
-  //         restaurants[]->{
-  //         ...,
-  //           dishes[]->,
-  //           type-> {
-  //             name
-  //           }
-  //         }
-  //       }`
-  //     )
-  //     .then((data) => {
-  //       setFeaturedCategories(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "featured"] {
+          ...,
+          restaurants[]->{
+          ...,
+            dishes[]->,
+            type-> {
+              name
+            }
+          }
+        }`
+      )
+      .then((data) => {
+        setFeaturedCategories(data);
+      });
+  }, []);
 
-  // console.log(featuredCategories);
+  console.log(featuredCategories);
 
   return (
     <SafeAreaView className="pt-5 bg-white">
@@ -92,25 +92,30 @@ const HomeScreen = () => {
         {/* Featured Rows */}
 
         {/* Featured */}
-        <FeaturedRow
-          id="1"
-          title="Featured"
-          description="Paid placements from our partners"
-        />
 
-        {/* Tasty Discounts */}
+        {/* you can use a flatlist */}
+        {featuredCategories?.map((category) => (
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
+        ))}
+
+        {/* Tasty Discounts
         <FeaturedRow
           id="2"
           title="Tasty Discounts"
           description="Paid placements from our partners"
         />
 
-        {/* Offers near you */}
+        Offers near you
         <FeaturedRow
           id="3"
           title="Offers near you"
           description="Paid placements from our partners"
-        />
+        /> */}
       </ScrollView>
     </SafeAreaView>
   );

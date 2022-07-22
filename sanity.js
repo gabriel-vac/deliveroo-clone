@@ -1,5 +1,5 @@
 import SanityClient from '@sanity/client';
-import { ImageUrlBuilder } from '@sanity/image-url';
+import imageUrlBuilder from '@sanity/image-url';
 
 const client = SanityClient({
   projectId: 't0ugjyaf', // you can find it in sanity.json inside sanity folder
@@ -8,7 +8,7 @@ const client = SanityClient({
   apiVersion: '2021-10-21',
 });
 
-const builder = ImageUrlBuilder(client);
+const builder = imageUrlBuilder(client);
 export const urlFor = (source) => builder.image(source);
 
 // RUN THIS to add exception fofr localhost 3000 CORS policy
