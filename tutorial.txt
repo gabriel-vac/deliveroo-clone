@@ -5,6 +5,17 @@ yarn add @react-navigation/native
 expo install react-native-screens react-native-safe-area-context
 yarn add @react-navigation/native-stack
 yarn add react-native-heroicons react-native-svg
+npm i @sanity/client @sanity/image-url  (depois de ja ter instalado e iniciado o sanity)
+
+
+[sanity]
+sanity init --coupon sonny2022
+rename the sanity project paste for sanity
+cd sanity
+sanity start
+create sanity.js outside of sanity folder
+sanity deploy (if you want to deploy for another people)
+
 
 
 //obs: react-native as views são flex por default e também flex-column

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -17,27 +17,51 @@ import {
 } from 'react-native-heroicons/outline';
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
+// import sanityClient from '../sanity';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  // const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
+
+  // useEffect(() => {
+  //   sanityClient
+  //     .fetch(
+  //       `*[_type == "featured"] {
+  //         ...,
+  //         restaurants[]->{
+  //         ...,
+  //           dishes[]->,
+  //           type-> {
+  //             name
+  //           }
+  //         }
+  //       }`
+  //     )
+  //     .then((data) => {
+  //       setFeaturedCategories(data);
+  //     });
+  // }, []);
+
+  // console.log(featuredCategories);
+
   return (
-    <SafeAreaView className="bg-white pt-5">
+    <SafeAreaView className="pt-5 bg-white">
       {/* Header */}
-      <View className="flex-row pb-3 items-center mx-4 space-x-2">
+      <View className="flex-row items-center pb-3 mx-4 space-x-2">
         <Image
           source={{
             uri: 'https://links.papareact.com/wru',
           }}
-          className="h-7 w-7 bg-gray-300 p-4 rounded-full"
+          className="p-4 bg-gray-300 rounded-full h-7 w-7"
         />
 
         <View className="flex-1">
-          <Text className="font-bold text-gray-400 text-xs">Deliver Now!</Text>
-          <Text className="font-bold text-xl">
+          <Text className="text-xs font-bold text-gray-400">Deliver Now!</Text>
+          <Text className="text-xl font-bold">
             Current Location
             <ChevronDownIcon size={20} color="#00CCBB" />
           </Text>
@@ -46,8 +70,8 @@ const HomeScreen = () => {
       </View>
 
       {/* Search */}
-      <View className="flex-row items-center space-x-2 pb-2 mx-4">
-        <View className="flex-row space-x-2 flex-1 bg-gray-200 p-3">
+      <View className="flex-row items-center pb-2 mx-4 space-x-2">
+        <View className="flex-row flex-1 p-3 space-x-2 bg-gray-200">
           <SearchIcon size={20} color="gray" />
           <TextInput
             placeholder="Restaurants and cuisines"
