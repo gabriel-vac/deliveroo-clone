@@ -27,7 +27,7 @@ const FeaturedRow = ({ id, title, description }) => {
       });
   }, [id]);
 
-  console.log({ restaurants });
+  console.log(restaurants);
 
   return (
     <View>
@@ -51,7 +51,7 @@ const FeaturedRow = ({ id, title, description }) => {
             key={restaurant._id}
             id={restaurant._id}
             imgUrl={restaurant.image}
-            title={restaurant.title}
+            title={restaurant.name}
             rating={restaurant.reaing}
             genre={restaurant.type?.name}
             address={restaurant.address}

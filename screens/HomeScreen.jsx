@@ -46,8 +46,6 @@ const HomeScreen = () => {
       });
   }, []);
 
-  console.log(featuredCategories);
-
   return (
     <SafeAreaView className="pt-5 bg-white">
       {/* Header */}
@@ -91,8 +89,6 @@ const HomeScreen = () => {
 
         {/* Featured Rows */}
 
-        {/* Featured */}
-
         {/* you can use a flatlist */}
         {featuredCategories?.map((category) => (
           <FeaturedRow
@@ -110,7 +106,7 @@ const HomeScreen = () => {
           description="Paid placements from our partners"
         />
 
-        Offers near you
+        Featured
         <FeaturedRow
           id="3"
           title="Offers near you"
