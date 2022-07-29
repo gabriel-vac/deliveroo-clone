@@ -69,7 +69,7 @@ const HomeScreen = () => {
 
       {/* Search */}
       <View className="flex-row items-center pb-2 mx-4 space-x-2">
-        <View className="flex-row flex-1 p-3 space-x-2 bg-gray-200">
+        <View className="flex-row flex-1 p-3 space-x-2 bg-gray-200 rounded-xl">
           <SearchIcon size={20} color="gray" />
           <TextInput
             placeholder="Restaurants and cuisines"
