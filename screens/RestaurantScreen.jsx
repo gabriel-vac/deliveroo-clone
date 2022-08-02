@@ -7,7 +7,9 @@ import {
   LocationMarkerIcon,
   StarIcon,
 } from 'react-native-heroicons/solid';
+import { QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
 import sanityClient, { urlFor } from '../sanity';
+import DishRow from '../components/DishRow';
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
@@ -62,7 +64,32 @@ const RestaurantScreen = () => {
               <Text className="text-xs text-gray-500">Nearby · {address}</Text>
             </View>
           </View>
+          <Text className="text-gray-500 mt-2 pb-4">{short_description}</Text>
         </View>
+
+        <TouchableOpacity className="flex-row items-center space-x-2 p-4 border-y border-gray-300">
+          <QuestionMarkCircleIcon color="gray" opacity={0.6} size={20} />
+          <Text className="pl-2 flex-1 text-md font-bold">
+            Have a food allergy?
+          </Text>
+          <ChevronRightIcon color="#00CCBB" />
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
+
+        {/* Dishrows */}
+        {dishes.map((dish) => (
+          <DishRow
+            key={dish._id}
+            id={dish._id}
+            name={dish.name}
+            description={dish.short_description}
+            price={dish.price}
+            image={dish.image}
+          />
+        ))}
       </View>
     </ScrollView>
   );
