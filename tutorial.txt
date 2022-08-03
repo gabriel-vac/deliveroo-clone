@@ -6,7 +6,7 @@ expo install react-native-screens react-native-safe-area-context
 yarn add @react-navigation/native-stack
 yarn add react-native-heroicons react-native-svg
 npm i @sanity/client @sanity/image-url  (depois de ja ter instalado e iniciado o sanity)
-yarn add react-currency-format
+yarn add @reduxjs/toolkit react-redux
 
 
 [sanity]
